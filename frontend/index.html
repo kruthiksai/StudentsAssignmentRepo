@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UH Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- <section id="header">
+        <a href="#"><img id="df" class="logo" src="img/logo.png" class="logo"></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i></a></li>
+            </ul>
+        </div>
+    </section> -->
+
+    <nav class="navbar navbar-expand-lg">
+        <a href="#"><img id="df" class="logo ml-3" src="img/logo.png" class="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">Shop</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+                </li>
+
+                <li class="nav-item user-info" style="display: none;">
+                    <span class="nav-link" id="user-name">Hello</span>
+                </li>
+                <li class="nav-item user-info" style="display: none;">
+                    <a class="nav-link" id="logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+
+
+    <section id="main" class="container-fluid">
+        <div class="row">
+            <div class="col" id="hero">
+                <h4>Welcome to the Shop</h4>
+                <h2> Super Value Deals</h3>
+                    <h1>On all Products</h1>
+                    <p> Save upto 40%</p>
+                    <button>Shop Now</button>
+            </div>
+
+
+            <div class="col" id="login-form">
+                <div class="card">
+                    <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="tab-login" data-toggle="pill" href="#pills-login" role="tab"
+                                aria-controls="pills-login" aria-selected="true">Login</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="tab-register" data-toggle="pill" href="#pills-register" role="tab"
+                                aria-controls="pills-register" aria-selected="false">Register</a>
+                        </li>
+                    </ul>
+
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="pills-login" role="tabpanel"
+                            aria-labelledby="tab-login">
+                            <!-- Login Form -->
+                            <div class="card-header">
+                                <h3>Sign In</h3>
+
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                                        </div>
+                                        <input type="email" id="login-email" class="form-control" placeholder="email">
+                                        <div class="error-message" id="login-email-error-message"></div>
+                                    </div>
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                        </div>
+                                        <input type="password" id="login-password" class="form-control"
+                                            placeholder="password">
+                                        <div class="error-message" id="login-password-error-message"></div>
+                                    </div>
+                                    <div class="row align-items-center remember">
+                                        <input type="checkbox">Remember Me
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" id="login" value="Login" class="btn float-right login_btn">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+                            <!-- Register Form -->
+                            <div class="card-header">
+                                <h3>Sign Up</h3>
+
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" id="register-name" class="form-control" placeholder="name">
+
+                                    </div>
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fa-solid fa-envelope"></i></span>
+                                        </div>
+                                        <input type="email" id="register-email" class="form-control"
+                                            placeholder="email">
+                                        <div class="error-message" id="email-error-message"></div>
+
+                                    </div>
+                                    <div class="input-group form-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                        </div>
+                                        <input type="password" id="register-password" class="form-control"
+                                            placeholder="password">
+                                        <div class="error-message" id="password-error-message"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" id="register" value="Register"
+                                            class="btn float-right login_btn">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="feature" class="container section-p1">
+        <div class="row">
+            <div class="col-lg-2 fe-box">
+                <img src="img/features/f1.png" alt="">
+                <h6>Free Shipping</h6>
+            </div>
+            <div class="col-lg-2 fe-box">
+                <img src="img/features/f2.png" alt="">
+                <h6>Online Orders</h6>
+            </div>
+            <div class="col-lg-2 fe-box">
+                <img src="img/features/f3.png" alt="">
+                <h6>Save Money</h6>
+            </div>
+            <div class="col-lg-2 fe-box">
+                <img src="img/features/f4.png" alt="">
+                <h6>Promotions</h6>
+            </div>
+            <div class="col-lg-2 fe-box">
+                <img src="img/features/f6.png" alt="">
+                <h6>24/7 Support</h6>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section-p1 products-section">
+        <h2>Newly Added Products</h2>
+        <p>Products of the season</p>
+        <div class="row products" id="products">
+
+        </div>
+
+    </section>
+
+
+    <section class="container-fluid">
+        <div class="row newsletter">
+            <div class="col-lg-6 newstext">
+                <h4>Sign Up For newsletter</h4>
+                <p>Get E-mail updates about out latest shop and <span>special offers.</span></p>
+            </div>
+            <div class="col-lg-6 form newsletter-form">
+                <input type="email" placeholer="Your email address">
+                <button class="normal">Sign Up</button>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+
+
+    <script>
+
+
+        $('#register').click(function (event) {
+            event.preventDefault();
+
+            $('#email-error-message').text('');
+            $('#password-error-message').text('');
+
+            const email = $('#register-email').val().trim();
+            const password = $('#register-password').val().trim();
+            const name = $('#register-name').val().trim();
+
+            if (!name) {
+                alert('Name is required.');
+                return;
+            }
+
+            if (!email) {
+                $('#email-error-message').text('Email is required.');
+                return;
+            } else if (!validateEmail(email)) {
+                $('#email-error-message').text('Invalid email format.');
+                return;
+            }
+
+            if (!password) {
+                $('#password-error-message').text('Password is required.');
+                return;
+            }
+
+            console.log('Sending data:', {
+                name,
+                email,
+                password
+            });
+
+            // Send the data via AJAX
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: `/api/user/register`,
+                data: JSON.stringify({
+                    name,
+                    email,
+                    password
+                }),
+                dataType: 'json',
+                cache: false,
+                timeout: 600000,
+                success: function (data) {
+                    alert('Registration successful');
+                    window.location.href = "index.html";
+                },
+                error: function (e) {
+                    alert('Error during registration request:', e.responseText);
+                }
+            });
+        });
+
+
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        $('#login').click(function (event) {
+            event.preventDefault();  // Prevent form submission
+
+            $('#login-email-error-message').text('');
+            $('#login-password-error-message').text('');
+
+            const email = $('#login-email').val().trim();
+            const password = $('#login-password').val().trim();
+
+            if (!email) {
+                $('#login-email-error-message').text('Email is required.');
+                return;
+            } else if (!validateEmail(email)) {
+                $('#login-email-error-message').text('Invalid email format.');
+                return;
+            }
+
+            if (!password) {
+                $('#login-password-error-message').text('Password is required.');
+                return;
+            }
+
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: `/api/user/login`,
+                data: JSON.stringify({
+                    email,
+                    password
+                }),
+                dataType: 'json',
+                success: function (response) {
+                    alert('Login successful');
+                    console.log(response);
+                    sessionStorage.setItem('userEmail', email);
+                    sessionStorage.setItem('userName', response.name);
+                    window.location.href = "shop.html";
+                },
+                error: function (e) {
+                    if (e.status === 401) {
+                        alert('Login failed: Incorrect email or password');
+                    } else {
+                        alert('Login failed: ' + e.responseText);
+                    }
+                }
+            });
+        });
+
+        // Function to fetch questions from the API
+        function fetchBooks() {
+
+            fetch(`/api/books/getlatestbooks`)
+                .then(response => response.json())
+                .then(data => {
+                    displayBooks(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching Books:', error);
+                });
+        }
+
+        function displayBooks(books) {
+            const productsDiv = document.getElementById('products');
+
+            // Clear any existing content inside the products div
+            productsDiv.innerHTML = '';
+
+            books.forEach(book => {
+                // Create a new div element for each book
+                const bookHTML = `
+            <div class="col-lg-3">
+                <div class="pro-container">
+                    <div class="pro">
+                        <img src="${book.imgUrl}" alt="${book.name}">
+                        <div class="des">
+                            <span>${book.name}</span>
+                            <div id="allignment">
+                            <h4>$${book.price.toFixed(2)}</h4>
+                             <a href="sproduct.html?id=${book.id}"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        `
+
+                // Append the new HTML to the products div
+                productsDiv.innerHTML += bookHTML;
+            });
+        }
+        fetchBooks()
+
+        const userEmail = sessionStorage.getItem('userEmail');
+        const userName = sessionStorage.getItem('userName');
+
+        if (userEmail) {
+
+            const userInfoElements = document.getElementsByClassName('user-info');
+
+            for (let i = 0; i < userInfoElements.length; i++) {
+                userInfoElements[i].style.display = 'flex';
+            }
+
+            document.getElementById('login-form').style.display = 'none'
+            document.getElementById('user-name').textContent = `Welcome, ${userName}`;
+            document.getElementById('logout').addEventListener('click', function () {
+                sessionStorage.clear();
+                alert('You have been logged out');
+                window.location.href = 'index.html';
+            });
+        } else {
+            const userInfoElements = document.getElementsByClassName('user-info');
+            for (let i = 0; i < userInfoElements.length; i++) {
+                userInfoElements[i].style.display = 'none';
+            }
+        }
+
+
+    </script>
+</body>
+
+
+
+</html>

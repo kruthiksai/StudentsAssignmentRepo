@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./books
+    image: kruthiksai/backendapp
+    container_name: backend
+    ports:
+      - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://project.cehuz5oqtdo9.us-east-1.rds.amazonaws.com:3306/project
+      DB_USER: admin
+      DB_PASS: password
+    networks:
+      - app-net
+
+  frontend:
+    build:
+      context: ./frontend
+    image: front-end
+    container_name: frontend
+    ports:
+      - "80:80"
+    environment:
+      BACKEND_API_URL: backend:8080
+    depends_on:
+      - backend
+    networks:
+      - app-net
+
+networks:
+  app-net:
+    driver: bridge

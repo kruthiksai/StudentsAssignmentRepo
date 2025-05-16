@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UH Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a href="#"><img id="df" class="logo ml-3" src="img/logo.png" class="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="shop.html">Shop</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="cart.html"><i class="fa fa-shopping-cart"></i></a>
+                </li>
+
+                <li class="nav-item user-info" style="display: none;">
+                    <span class="nav-link" id="user-name">Hello</span>
+                </li>
+                <li class="nav-item user-info" style="display: none;">
+                    <a class="nav-link" id="logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col" id="page-header">
+                <h2>#Cart</h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-p1 products-section container-fluid">
+        <div class="row products table-responsive" id="cart">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Remove</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-body">
+                    <!-- Cart items will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container-fluid checkout-section">
+            <button type="button" class="btn btn-primary">Order</button>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js"></script>
+
+    <script>
+
+
+        function displayCart(cartItems) {
+            let cartBody = $('#cart-body');
+            cartBody.empty(); // Clear any existing rows
+
+            cartItems.forEach(item => {
+                const subtotal = (item.price * item.quantity).toFixed(2);
+
+                let row = `
+                    <tr>
+                        <th><a href="#"><i class="far fa-times-circle"></i></a></th>
+                        <td><img src="${item.imgUrl}" alt="${item.name}" style="width: 100px;"></td>
+                        <td>${item.name}</td>
+                        <td>$${item.price.toFixed(2)}</td>
+                        <td>${item.quantity}</td>
+                        <td>$${subtotal}</td>
+                    </tr>
+                `;
+                cartBody.append(row);
+            });
+        }
+
+        // Fetch the cart on page load
+        $(document).ready(function () {
+            const userEmail = sessionStorage.getItem('userEmail');
+            
+            if (!userEmail) {
+                alert("Login to View the Items")
+                window.location.href = 'index.html';
+
+            }
+            fetchCart(userEmail);
+            
+            const userName = sessionStorage.getItem('userName');
+
+            if (userEmail) {
+
+                const userInfoElements = document.getElementsByClassName('user-info');
+
+                for (let i = 0; i < userInfoElements.length; i++) {
+                    userInfoElements[i].style.display = 'flex';
+                }
+
+              
+                document.getElementById('user-name').textContent = `Welcome, ${userName}`;
+                document.getElementById('logout').addEventListener('click', function () {
+                    sessionStorage.clear();
+                    alert('You have been logged out');
+                    window.location.href = 'index.html';
+                });
+            } else {
+                const userInfoElements = document.getElementsByClassName('user-info');
+                for (let i = 0; i < userInfoElements.length; i++) {
+                    userInfoElements[i].style.display = 'none';
+                }
+            }
+
+
+
+            function fetchCart(userEmail) {
+                $.ajax({
+                    type: "GET",
+                    url: `/api/cart/getcart/${userEmail}`,
+                    success: function (response) {
+                        displayCart(response);
+                    },
+                    error: function (e) {
+                        console.error("Error fetching cart data: ", e);
+                        alert("Failed to load cart.");
+                    }
+                });
+            }
+
+        });
+    </script>
+</body>
+
+</html>
