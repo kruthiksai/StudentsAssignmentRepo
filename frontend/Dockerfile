@@ -1,14 +1,14 @@
 FROM nginx:alpine
 
-# Copy static files
-COPY . /usr/share/nginx/html
+# Accept student ID at build time
+ARG STUDENT_ID
+ENV STUDENT_ID=${STUDENT_ID}
 
-# Copy custom template and start script
-COPY nginx.template.conf /etc/nginx/nginx.template.conf
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
+# Copy all static files first
+COPY . /usr/share/nginx/html/
 
-# Use start script as entrypoint
-ENTRYPOINT ["/start.sh"]
+# Inject <base href="/STUDENT_ID/"> into index.html
+RUN sed -i "s|<head>|<head><base href='/${STUDENT_ID}/'>|" /usr/share/nginx/html/index.html
 
+# Use default nginx entrypoint
 EXPOSE 80
