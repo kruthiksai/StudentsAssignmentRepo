@@ -1,13 +1,11 @@
 FROM nginx:alpine
 
-# Copy static files
 COPY . /usr/share/nginx/html/
 COPY nginx.template.conf /etc/nginx/nginx.template.conf
 
 EXPOSE 80
 
-# On container start: inject base href and backend URL, then start NGINX
-CMD sh -c "\
+CMD ["/bin/sh", "-c", "\
   sed -i \"s|<head>|<head><base href='/${STUDENT_ID}/'>|\" /usr/share/nginx/html/index.html && \
   envsubst '\$BACKEND_API_URL' < /etc/nginx/nginx.template.conf > /etc/nginx/nginx.conf && \
-  nginx -g 'daemon off;'"
+  nginx -g 'daemon off;'"]
